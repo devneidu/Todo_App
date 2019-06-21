@@ -1,0 +1,53 @@
+
+body{
+    font-family: roboto
+}
+.br-0{
+    border-radius: 0
+}
+
+.light-green{
+    color: #42b883 !important
+}
+.wrapper{
+    margin-top: 16%;
+}
+.b-5{
+    font-weight: 500
+}
+.b-6{
+    font-weight: 600
+}
+.b-7{
+    font-weight: 700
+}
+.t-10{
+    font-size: 10px
+}
+.t-11{
+    font-size: 11px
+}
+.t-12{
+    font-size: 12px
+}
+.t-13{
+    font-size: 13px
+}
+.t-14{
+    font-size: 14px
+}
+.text-gray-300{
+    color: #e2e8f0;
+}
+.text-gray-400{
+    color: #cbd5e0;
+}
+.text-gray-500{
+    color: #a0aec0;
+}
+.text-gray-600{
+    color: #718096
+}
+a:hover{
+    text-decoration: none
+}
