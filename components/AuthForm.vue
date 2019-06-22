@@ -27,7 +27,6 @@
             <div class="text-center">
                 <p><strong>OR</strong></p>
                 <p><span class="text-gray-500 nav-link"  @click="changeAuth">Don't have an account?</span></p>
-                <b-button variant="primary" @click="makeToast('danger')" class="mb-2">Primary</b-button>
             </div>
         </form>
     </div>
@@ -55,35 +54,32 @@ export default {
             this.isLogin = !this.isLogin
             this.$store.dispatch('validation/clearErrors');
         },
-        login() {
-            
-        },
-        async register(){
+        async login() {
             try {
-                await this.$axios.post('register', this.form)
-
+                await this.$auth.login({data: this.form})
+                this.toast('success', 'check', 'Registration successful')
+                
+                this.$router.push('/todo')
             } catch (error) {
                 
             }
         },
-        makeToast(variant = null) {
-            this.$bvToast.toast('Toast body content', {
-                title: `Variant ${variant || 'default'}`,
-                variant: variant,
-                solid: true,
+        async register(){
+            try {
+                await this.$axios.post('register', this.form)
+                this.toast('success', 'check', 'Registration successful') //Global toaster mixin
+
+                this.$auth.login({data: this.form})
                 
-            })
-        }
+                this.form.name = ''
+                this.form.email = ''
+                this.form.password = ''
+                this.$router.push('/todo')
+            } catch (error) {
+                
+            }
+        },
     },
-    created() {
-        let variant = 'success'
-        this.$bvToast.toast('Toast body content', {
-          title: `Variant ${variant || 'default'}`,
-          variant: variant,
-          solid: true,
-          toaster: 'b-toaster-bottom-right',
-        })
-    }
 }
 </script>
 

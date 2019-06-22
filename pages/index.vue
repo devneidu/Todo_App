@@ -37,6 +37,7 @@
 <script>
 import AuthForm from '@/components/AuthForm'
 export default {    
+    middleware: 'guest',
     components: {
         AuthForm
     },

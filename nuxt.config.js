@@ -20,32 +20,28 @@ module.exports = {
       }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
+  
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
+  
   css: [
     '@/assets/css/main.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
+  
   plugins: [
     '~/plugins/axios',
+    '~/plugins/mixins/toast',
     '~/plugins/mixins/getErrors',
+    '~/plugins/mixins/getUser',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa',  
+    '@nuxtjs/toast',  
+    '@nuxtjs/auth',  
     [
       'nuxt-fontawesome', {
         imports: [
@@ -61,12 +57,32 @@ module.exports = {
       }
     ]
   ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+  toast: {
+    position: 'bottom-center',
+    keepOnHover: true,
+    duration: 3000
+  },
+
   axios: {
     baseURL: 'http://todoapp.test/api'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {url: '/login', method: "post", propertyName: 'token'},
+          user: {url: 'user', method: 'get', propertyName: 'data'},
+          logout: { url: '/logout', method: 'get'}
+        }
+      }
+    },
+    redirect: {
+      login: '/',
+      home: '/'
+    },
+    plugins: [
+      './plugins/auth'
+    ]
   },
   /*
   ** Build configuration
