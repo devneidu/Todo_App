@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="todo-item" :duration="{ enter:300, leave: 400}" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
-            <div v-for="(todo) in todos" :key="todo.id" class="d-flex flex-row justify-content-between p-3 bg-light shadow-sm mb-2 todo-item"  @click="toggle(todo, $event)">
+            <div v-for="(todo) in todos" :key="todo.id" class="d-flex flex-row justify-content-between p-lg-3 p-2 bg-light shadow-sm mb-2 todo-item"  @click="toggle(todo, $event)">
                 <div class="todo-left d-flex flex-row ">
                     <label class="checkWrapper">
                         <input type="checkbox" disabled :checked="todo.completed">
@@ -9,7 +9,6 @@
                     </label>
                     <div>
                         <h6 :class="[todo.completed ? 'todo-completed' : '']">{{ todo.title }}</h6>
-                        <!-- <input type="text" :size="todo.title.length" :value="todo.title" class="b-5 bg-light pb-1" style="border: 0; width: 100%"> -->
                         <p class="mb-0 font-italic text-gray-500" :class="[todo.completed ? 'todo-completed' : '']">{{ todo.date }}</p>
                     </div>
                 </div>
@@ -69,6 +68,27 @@ export default {
     font-weight: 400 !important;
     transition: 0.4s all ease-in
 }
-
+@media(max-width: 500px) {
+    .font-italic{
+        font-size: 70%
+    }
+    h6{
+        font-size: 0.8em
+    }
+    .fa-trash{
+        font-size: 13px
+    }
+    .chechmark{
+        width: 14px;
+        height: 14px;
+    }
+    .checkWrapper .checkmark:after{
+        left: 3px;
+        top: 0px;
+        width: 5px;
+        height: 9px;
+        transition: 0.7s ease all
+    }
+}
 /* Start of checkbox */
 </style>

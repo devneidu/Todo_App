@@ -9,7 +9,7 @@
                                 <h1 class="b-7 mb-">TODO LIST</h1>
                             <p class="text-white-50">{{ $dayjs().format('dddd, DD MMM YYYY').toString() }}</p>
                             </div>
-                            <div class="profile" v-show="!isAdd" @click="isAdd = !isAdd">
+                            <div class="profile" v-show="!isAdd" @click="showForm">
                                 <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ export default {
     computed: {
         ...mapGetters('todos', {
             todos: 'filteredTodos',
-        }),     
+        }), 
     },
     data() {
         return {
@@ -60,8 +60,16 @@ export default {
             
         }
     },
+    methods: {
+        showForm(){
+            this.isAdd = true
+            this.$store.dispatch('validation/clearErrors')
+        }
+    },
     created() {
-        console.log(this.profile)
+        this.$on('isAdd', () => {
+            this.isAdd = !this.isAdd
+        })
     }
 }
 </script>
@@ -126,21 +134,28 @@ export default {
 }
 @media(max-width: 500px) {
     .upper h1{
-        font-size: 1.7em
+        font-size: 1.6em
     }
     .upper h4{
         font-size: 1em
     }
     .profile{
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 17px
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px
+    }
+    .upper, .lower{
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 @media(max-width: 400px) {
     .upper h1{
-        font-size: 1.5em
+        font-size: 1.4em
+    }
+    .upper p{
+        font-size: 85%
     }
     .upper h4{
         font-size: 1em

@@ -54,20 +54,10 @@ export default {
 }
 
 
-  /* End of checkbox */
-@media(max-width: 992px) {
-    #col{
-        padding-right: 0 !important;
-        padding-left: 0 !important;
+@media(max-width: 500px) {
+    .btn{
+        font-size: 70% !important
     }
 }
-@media(max-width: 600px) {
-    
-}
-@media(max-width: 500px) {
-    
-}
-@media(max-width: 400px) {
-    
-}
+
 </style>

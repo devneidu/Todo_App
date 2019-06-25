@@ -12,7 +12,9 @@ export default {
         state.todos.splice(index, 1);
     },
     CHANGE_FILTER(state, value){
-        
         state.filter = value
+    },
+    ADD_TODO(state, todo){
+        state.todos.push(todo)
     }
 }

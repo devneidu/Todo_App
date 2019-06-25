@@ -27,5 +27,9 @@ export default {
     },
     changeFilter({commit}, value){
         commit('CHANGE_FILTER', value)
+    },
+    async addTodo({commit}, payload) {
+        let {data} = await this.$axios.post('todos', payload)
+        commit('ADD_TODO', data.data)
     }
 }
