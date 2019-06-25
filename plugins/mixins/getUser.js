@@ -10,9 +10,6 @@ const Validate = {
                     profile: 'auth/user',
                     authenticated: 'auth/authenticated',
                 }),
-                user(){
-                    return "hellow"
-                }
             }
         })
     }

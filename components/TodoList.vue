@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {mapState, mapGetters, mapActions } from 'vuex'
+import {mapActions } from 'vuex'
 export default {
     props: {
         todos: {
@@ -30,16 +30,6 @@ export default {
             type: Array
         },
 
-    },
-    computed: {
-        
-    },
-    async fetch({store, $axios}) {
-        try {
-            await store.dispatch('todos/fetchTodos')
-        } catch (error) {
-            
-        }
     },
     methods: {
         ...mapActions({
@@ -81,78 +71,4 @@ export default {
 }
 
 /* Start of checkbox */
-
-.checkWrapper {
-    display: block;
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .checkWrapper input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 3px;
-    left: 0;
-    height: 17px;
-    width: 17px;
-    background-color: #eee;
-    border:  1px solid #28a745
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .checkWrapper:hover input ~ .checkmark {
-    background-color: #ccc;
-    border:  1px solid #ccc
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .checkWrapper input:checked ~ .checkmark {
-    background-color: #28a745;
-    border:  1px solid #28a745;
-    transition: 0.4s ease cubic-bezier(0.075, 0.82, 0.165, 1)
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .checkWrapper input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .checkWrapper .checkmark:after {
-    left: 4px;
-    top: 0px;
-    width: 7px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-
-
 </style>
