@@ -10,13 +10,13 @@ export default function({store, $axios, redirect, app})
     })
 
     $axios.onResponse(response => {
-        // if(response.status == 201) {
-        //     toast('success', 'check', response.data.message);
-        // }
         return Promise.resolve(response)
     })
 
     $axios.onError(error => {
+        if(typeof(error.response) == 'undefined') {
+            toast('error', 'network_check', "No network available");
+        }
         
         if(error.response.status == 422) {
             store.dispatch('validation/setErrors', error.response.data.errors)
@@ -27,9 +27,7 @@ export default function({store, $axios, redirect, app})
             toast('error', 'error', "Server error");
         }
         
-        if(!error.response) {
-            toast('error', 'network_check', "No network available");
-        }
+
         return Promise.reject(error)
     })
 

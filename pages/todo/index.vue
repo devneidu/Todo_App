@@ -8,6 +8,12 @@
                             <div>
                                 <h1 class="b-7 mb-">TODO LIST</h1>
                             <p class="text-white-50">{{ $dayjs().format('dddd, DD MMM YYYY').toString() }}</p>
+                            <p>
+                                <span class="bg-danger text-white p-1 logout" @click="logout">
+                                <font-awesome-icon :icon="['fas', 'sign-out-alt']"></font-awesome-icon>
+                                Logout
+                                </span>
+                            </p>
                             </div>
                             <div class="profile" v-show="!isAdd" @click="showForm">
                                 <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
@@ -38,6 +44,7 @@ import TodoList from '~/components/TodoList'
 import TodoFilter from '~/components/TodoFilter'
 import {mapState, mapGetters, mapActions } from 'vuex'
 export default {
+    middleware: 'auth',
     components:{
         TodoForm,
         TodoList,
@@ -64,6 +71,9 @@ export default {
         showForm(){
             this.isAdd = true
             this.$store.dispatch('validation/clearErrors')
+        },
+        logout(){
+            this.$auth.logout()
         }
     },
     created() {
@@ -75,6 +85,9 @@ export default {
 </script>
 
 <style scoped>
+.logout{
+    cursor: pointer;
+}
 .backBtn{
     cursor: pointer;
 }

@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6 left-side">
+        <div class="col-md-6 left-side">
             <div class="container">
                 <div class="d-flex flex-row justify-content-between pt-4">
                     <div class="light-green"><img src="/logo.png" alt="logo" height="30" width="30"> <strong>TodoApp</strong></div>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 right-side">
+        <div class="col-md-6 right-side">
             <div class="bottom">
                 <div class="btm_logo">
                     <img src="https://pbs.twimg.com/profile_images/1135493656901750784/AkIs_7dw_400x400.png" height="60" width="60" class="rounded-circle shadow" alt="">
@@ -80,5 +80,11 @@ export default {
     width: 100%;
     height: 100vh;
     background: #eaeaea
+}
+
+@media(max-width: 768px) {
+    .right-side{
+        display: none
+    }
 }
 </style>
