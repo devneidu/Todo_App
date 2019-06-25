@@ -3,6 +3,10 @@ export default function({store, $axios, redirect, app})
 
     $axios.onRequest(config => {
         store.dispatch('validation/clearErrors')
+
+        if(store.getters['auth/authenticated']){
+            config.headers.common['Authorization'] = store.$auth.$storage._state['_token.local']
+        }
     })
 
     $axios.onResponse(response => {
@@ -17,6 +21,10 @@ export default function({store, $axios, redirect, app})
         if(error.response.status == 422) {
             store.dispatch('validation/setErrors', error.response.data.errors)
             toast('error', 'error', "The given data was invalid");
+        }
+        
+        if(error.response.status >= 500) {
+            toast('error', 'error', "Server error");
         }
         
         if(!error.response) {

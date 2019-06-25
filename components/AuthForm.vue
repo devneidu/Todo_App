@@ -5,7 +5,6 @@
             <h5 class="b-6 mb-5" v-else>CREATE NEW ACCOUNT</h5>
         </transition>
         <form @submit.prevent="[isLogin ? login() : register()]">
-            
             <transition name="authForm">
                 <div class="form-group" v-show="!isLogin">
                     <input type="text" class="form-control br-0 t-14" :class="[errors.name ? 'is-invalid' : '']" v-model="form.name" placeholder="Your name" autocomplete="nope">
@@ -57,7 +56,7 @@ export default {
         async login() {
             try {
                 await this.$auth.login({data: this.form})
-                this.toast('success', 'check', 'Registration successful')
+                this.toast('success', 'check', 'Welcome back')
                 
                 this.$router.push('/todo')
             } catch (error) {

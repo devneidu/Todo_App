@@ -24,7 +24,8 @@ module.exports = {
   loading: { color: '#fff' },
   
   css: [
-    '@/assets/css/main.css'
+    '@/assets/css/main.css',
+    '@/assets/css/animated.css',
   ],
   
   plugins: [
@@ -32,12 +33,14 @@ module.exports = {
     '~/plugins/mixins/toast',
     '~/plugins/mixins/getErrors',
     '~/plugins/mixins/getUser',
+    '~/plugins/helpers/retrieveWeek',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     'bootstrap-vue/nuxt',
+    'nuxt-dayjs-module',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',  
     '@nuxtjs/toast',  
