@@ -50,9 +50,6 @@ export default {
             isLogin: true
         }
     },
-    computed: {
-        
-    },
     methods: {
         changeAuth() {
             this.isLogin = !this.isLogin
