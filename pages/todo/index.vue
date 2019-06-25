@@ -26,24 +26,7 @@
                             <span class="btn float-right b-7">{{getCompletedTodos}}/{{todos.length}}</span>
                         </div>
                         <hr>
-                        <transition-group name="todo-item" :duration="{ enter:300, leave: 400}" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
-                            <div v-for="(todo) in todos" :key="todo.id" class="d-flex flex-row justify-content-between p-3 bg-light shadow-sm mb-2 todo-item"  @click="toggle(todo)">
-                                <div class="todo-left d-flex flex-row ">
-                                    <label class="checkWrapper">
-                                        <input type="checkbox" disabled :checked="todo.completed">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <div>
-                                        <h6 :class="[todo.completed ? 'todo-completed' : '']">{{ todo.title }}</h6>
-                                        <!-- <input type="text" :size="todo.title.length" :value="todo.title" class="b-5 bg-light pb-1" style="border: 0; width: 100%"> -->
-                                        <p class="mb-0 font-italic text-gray-500" :class="[todo.completed ? 'todo-completed' : '']">{{ todo.date }}</p>
-                                    </div>
-                                </div>
-                                <div class="todo-right">
-                                    <font-awesome-icon :icon="['fas', 'trash']" @click="deleteTodo(todo.id)" class="text-danger"></font-awesome-icon>
-                                </div>
-                            </div>
-                        </transition-group>
+                        <todo-list :todos="todos"></todo-list>
                     </div>
                     <div v-else class="lower">
                         <div class="btn btn-light br-0 btn-sm mb-4 backBtn" @click="isAdd = !isAdd">
@@ -63,10 +46,12 @@
 <script>
 
 import TodoForm from '~/components/TodoForm'
+import TodoList from '~/components/TodoList'
 import {mapState, mapGetters, mapActions } from 'vuex'
 export default {
     components:{
-        TodoForm
+        TodoForm,
+        TodoList
     },
     computed: {
         ...mapGetters('todos', {
