@@ -1,6 +1,9 @@
 <template>
     <div>
-        <transition-group name="todo-item" :duration="{ enter:300, leave: 400}" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
+        <div v-if="todos.length < 1" class="alert alert-info br-0 shadow">
+            <strong>No Todo</strong>
+        </div>
+        <transition-group  v-else  name="todo-item" :duration="{ enter:300, leave: 400}" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
             <div v-for="(todo) in todos" :key="todo.id" class="d-flex flex-row justify-content-between p-lg-3 p-2 bg-light shadow-sm mb-2 todo-item"  @click="toggle(todo, $event)">
                 <div class="todo-left d-flex flex-row ">
                     <label class="checkWrapper">

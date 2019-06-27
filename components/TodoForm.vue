@@ -16,7 +16,7 @@
                 <input type="time" class="form-control br-0 t-14"  placeholder="Time" :class="[errors.time ? 'is-invalid' : '']"  v-model="form.time">
                 <span v-if="errors.time" class="invalid-feedback">{{ errors.time[0] }}</span>
             </div>
-            <div class="form-group pt-5">
+            <div class="form-group pt-lg-5 py-3">
                 <input type="submit" class="btn btn-block btn-dark br-0 mt-2 btn-lg"  value="Add">
             </div>
         </form>
