@@ -68,11 +68,11 @@ export default {
                 await this.$axios.post('register', this.form)
                 this.toast('success', 'check', 'Registration successful') //Global toaster mixin
 
-                this.$auth.login({data: this.form})
+                await this.$auth.login({data: this.form})
                 
-                this.form.name = ''
-                this.form.email = ''
-                this.form.password = ''
+                // this.form.name = ''
+                // this.form.email = ''
+                // this.form.password = ''
                 this.$router.push('/todo')
             } catch (error) {
                 

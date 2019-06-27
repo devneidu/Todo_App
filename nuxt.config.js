@@ -67,7 +67,7 @@ module.exports = {
   },
 
   axios: {
-    baseURL: 'https://fathomless-gorge-19280.herokuapp.com/api'
+    baseURL: 'http://todoapp.test/api'
   },
   auth: {
     strategies: {
