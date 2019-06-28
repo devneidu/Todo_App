@@ -65,6 +65,18 @@ module.exports = {
     keepOnHover: true,
     duration: 3000
   },
+  manifest: {
+    name: 'TodoApp',
+    short_name: 'Nuxt_laravel',
+    lang: 'en',
+    description: 'Simple todo app for learning purpose, built on laravel api and nuxt',
+    theme_color: '#188269',
+    background_color: '#fff',
+    icons: 'icon.png',
+    display: 'standalone',
+    start_url: 'https://gifted-borg-5b68d2.netlify.com/',
+    theme_color: '#da552f',
+  },
 
   axios: {
     baseURL: 'https://fathomless-gorge-19280.herokuapp.com/api'
